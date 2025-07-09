@@ -12,20 +12,20 @@ import com.example.bottomnav.presentation.screens.messages.MessageScreen
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
-    NavHost(navController, startDestination = Screen.Calls.route){
-        composable(Screen.Calls.route){
-           CallsScreen()
+    NavHost(navController, startDestination = Screen.Calls.route) {
+        composable(Screen.Calls.route) {
+            CallsScreen()
         }
-        composable(Screen.Messages.route){
+        composable(Screen.Messages.route) {
             MessageScreen()
         }
-        composable(Screen.Keypad.route){
+        composable(Screen.Keypad.route) {
             KeypadScreen()
         }
-        composable(Screen.Contacts.route){
+        composable(Screen.Contacts.route) {
             ContactsScreen()
         }
-        composable(Screen.Account.route){
+        composable(Screen.Account.route) {
             AccountScreen()
         }
     }

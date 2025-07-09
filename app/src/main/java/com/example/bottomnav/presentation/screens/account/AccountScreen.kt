@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun AccountScreen() {
-
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text("Account Screen")
     }
