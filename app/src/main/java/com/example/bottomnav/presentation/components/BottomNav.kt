@@ -17,10 +17,38 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.bottomnav.R
 import com.example.bottomnav.presentation.navigation.BottomNavItem
+import com.example.bottomnav.presentation.navigation.Screen
 
 @Composable
 fun BottomBar(navController: NavController) {
-    val items = BottomNavItem.items
+    val navigationItems = listOf(
+        BottomNavItem(
+            route = Screen.Calls.route,
+            icon = R.drawable.ic_call_nav_unselected,
+            label = "Calls"
+        ),
+        BottomNavItem(
+            route = Screen.Messages.route,
+            icon = R.drawable.ic_message_nav_unselected,
+            label = "Messages"
+        ),
+        BottomNavItem(
+            route = Screen.Keypad.route,
+            icon = R.drawable.ic_keypad_nav_unselected,
+            label = "Keypad"
+        ),
+        BottomNavItem(
+            route = Screen.Contacts.route,
+            icon = R.drawable.ic_contact_nav_unselected,
+            label = "Contacts"
+        ),
+        BottomNavItem(
+            route = Screen.Account.route,
+            icon = R.drawable.ic_account_nav_unselected,
+            label = "Account"
+        )
+
+    )
 
     NavigationBar(
         containerColor = colorResource(R.color.background),
@@ -28,7 +56,7 @@ fun BottomBar(navController: NavController) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
-        items.forEach { item ->
+        navigationItems.forEach { item ->
             val selected = currentRoute == item.route
 
             NavigationBarItem(
@@ -58,7 +86,7 @@ fun BottomBar(navController: NavController) {
                         }
                     }
                 },
-                alwaysShowLabel = false,
+                alwaysShowLabel = true,
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = Color.Transparent,
                 ),

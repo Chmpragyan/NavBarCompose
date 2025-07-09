@@ -7,21 +7,21 @@ import androidx.navigation.compose.composable
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
-    NavHost(navController, startDestination = BottomNavItem.CallsScreen.route){
-        composable(BottomNavItem.CallsScreen.route){
-            BottomNavItem.CallsScreen
+    NavHost(navController, startDestination = Screen.Calls.route){
+        composable(Screen.Calls.route){
+            Screen.Calls
         }
-        composable(BottomNavItem.MessageScreen.route){
-            BottomNavItem.MessageScreen
+        composable(Screen.Messages.route){
+            Screen.Messages
         }
-        composable(BottomNavItem.KeypadScreen.route){
-            BottomNavItem.KeypadScreen
+        composable(Screen.Keypad.route){
+            Screen.Keypad
         }
-        composable(BottomNavItem.ContactsScreen.route){
-            BottomNavItem.ContactsScreen
+        composable(Screen.Contacts.route){
+            Screen.Contacts
         }
-        composable(BottomNavItem.AccountScreen.route){
-            BottomNavItem.AccountScreen
+        composable(Screen.Account.route){
+            Screen.Account
         }
     }
 }
