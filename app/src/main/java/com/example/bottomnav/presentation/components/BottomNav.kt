@@ -24,27 +24,32 @@ fun BottomBar(navController: NavController) {
     val navigationItems = listOf(
         BottomNavItem(
             route = Screen.Calls.route,
-            icon = R.drawable.ic_call_nav_unselected,
-            label = "Calls"
+            selectedIcon = R.drawable.ic_call_nav_selected,
+            unSelectedIcon = R.drawable.ic_call_nav_unselected,
+            label = "Calls",
         ),
         BottomNavItem(
             route = Screen.Messages.route,
-            icon = R.drawable.ic_message_nav_unselected,
+            selectedIcon = R.drawable.ic_message_nav_selected,
+            unSelectedIcon = R.drawable.ic_message_nav_unselected,
             label = "Messages"
         ),
         BottomNavItem(
             route = Screen.Keypad.route,
-            icon = R.drawable.ic_keypad_nav_unselected,
+            selectedIcon = R.drawable.ic_keypad_nav_selected,
+            unSelectedIcon = R.drawable.ic_keypad_nav_unselected,
             label = "Keypad"
         ),
         BottomNavItem(
             route = Screen.Contacts.route,
-            icon = R.drawable.ic_contact_nav_unselected,
+            selectedIcon = R.drawable.ic_contact_nav_selected,
+            unSelectedIcon = R.drawable.ic_contact_nav_unselected,
             label = "Contacts"
         ),
         BottomNavItem(
             route = Screen.Account.route,
-            icon = R.drawable.ic_account_nav_unselected,
+            selectedIcon = R.drawable.ic_account_nav_unselected,
+            unSelectedIcon = R.drawable.ic_account_nav_unselected,
             label = "Account"
         )
 
@@ -75,8 +80,9 @@ fun BottomBar(navController: NavController) {
                 selected = selected,
                 icon = {
                     Icon(
-                        painterResource(id = item.icon),
+                        painterResource(id = if (selected) item.selectedIcon else item.unSelectedIcon),
                         contentDescription = item.label,
+                        tint = if (selected) colorResource(R.color.on_primary) else colorResource(R.color.on_surface_variant),
                     )
                 },
                 onClick = {
