@@ -4,12 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.bottomnav.presentation.screens.calls.CallsScreen
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
     NavHost(navController, startDestination = Screen.Calls.route){
         composable(Screen.Calls.route){
-            Screen.Calls
+           CallsScreen()
         }
         composable(Screen.Messages.route){
             Screen.Messages
