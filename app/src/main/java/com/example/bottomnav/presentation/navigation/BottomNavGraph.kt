@@ -4,24 +4,29 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.bottomnav.presentation.screens.account.AccountScreen
+import com.example.bottomnav.presentation.screens.calls.CallsScreen
+import com.example.bottomnav.presentation.screens.contacts.ContactsScreen
+import com.example.bottomnav.presentation.screens.keypad.KeypadScreen
+import com.example.bottomnav.presentation.screens.messages.MessageScreen
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
-    NavHost(navController, startDestination = BottomNavItem.CallsScreen.route){
-        composable(BottomNavItem.CallsScreen.route){
-            BottomNavItem.CallsScreen
+    NavHost(navController, startDestination = Screen.Calls.route) {
+        composable(Screen.Calls.route) {
+            CallsScreen()
         }
-        composable(BottomNavItem.MessageScreen.route){
-            BottomNavItem.MessageScreen
+        composable(Screen.Messages.route) {
+            MessageScreen()
         }
-        composable(BottomNavItem.KeypadScreen.route){
-            BottomNavItem.KeypadScreen
+        composable(Screen.Keypad.route) {
+            KeypadScreen()
         }
-        composable(BottomNavItem.ContactsScreen.route){
-            BottomNavItem.ContactsScreen
+        composable(Screen.Contacts.route) {
+            ContactsScreen()
         }
-        composable(BottomNavItem.AccountScreen.route){
-            BottomNavItem.AccountScreen
+        composable(Screen.Account.route) {
+            AccountScreen()
         }
     }
 }

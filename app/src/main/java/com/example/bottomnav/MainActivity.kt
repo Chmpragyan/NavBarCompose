@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(){
+fun MainScreen() {
     val navController = rememberNavController()
 
     Scaffold(
