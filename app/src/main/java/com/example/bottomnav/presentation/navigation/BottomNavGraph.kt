@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.bottomnav.presentation.screens.account.AccountScreen
 import com.example.bottomnav.presentation.screens.calls.CallsScreen
+import com.example.bottomnav.presentation.screens.contacts.ContactsScreen
 import com.example.bottomnav.presentation.screens.keypad.KeypadScreen
 import com.example.bottomnav.presentation.screens.messages.MessageScreen
 
@@ -21,10 +23,10 @@ fun BottomNavGraph(navController: NavHostController) {
             KeypadScreen()
         }
         composable(Screen.Contacts.route){
-            Screen.Contacts
+            ContactsScreen()
         }
         composable(Screen.Account.route){
-            Screen.Account
+            AccountScreen()
         }
     }
 }
