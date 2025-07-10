@@ -71,7 +71,7 @@ fun BottomBar(navController: NavController) {
     NavigationBar(
         containerColor = colorResource(R.color.background),
         contentColor = colorResource(R.color.background),
-        modifier = Modifier.height(108.dp)
+        modifier = Modifier.height(98.dp)
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
@@ -94,9 +94,9 @@ fun BottomBar(navController: NavController) {
                         )
                         Text(
                             text = item.label,
-                            fontSize = 11.sp,
+                            fontSize = 12.sp,
                             fontFamily = FontFamily.SansSerif,
-                            fontWeight = if (selected) FontWeight.W600 else FontWeight.W500,
+                            fontWeight = if (selected) FontWeight.W500 else FontWeight.W400,
                             color = if (selected) {
                                 colorResource(R.color.on_primary)
                             } else colorResource(R.color.on_surface_variant)
