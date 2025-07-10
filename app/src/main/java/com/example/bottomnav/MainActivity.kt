@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.bottomnav.presentation.components.BottomBar
-import com.example.bottomnav.presentation.navigation.BottomNavGraph
+import com.example.bottomnav.presentation.navigation.NavGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ fun MainScreen() {
         bottomBar = { BottomBar(navController = navController) }
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            BottomNavGraph(navController = navController)
+            NavGraph(navController = navController)
         }
     }
 }

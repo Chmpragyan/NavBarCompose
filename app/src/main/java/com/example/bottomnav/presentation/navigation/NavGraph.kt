@@ -6,12 +6,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.bottomnav.presentation.screens.account.AccountScreen
 import com.example.bottomnav.presentation.screens.calls.CallsScreen
+import com.example.bottomnav.presentation.screens.contacts.ContactDetailScreen
 import com.example.bottomnav.presentation.screens.contacts.ContactsScreen
 import com.example.bottomnav.presentation.screens.keypad.KeypadScreen
 import com.example.bottomnav.presentation.screens.messages.MessageScreen
 
 @Composable
-fun BottomNavGraph(navController: NavHostController) {
+fun NavGraph(navController: NavHostController) {
     NavHost(navController, startDestination = Screen.Calls.route) {
         composable(Screen.Calls.route) {
             CallsScreen()
@@ -27,6 +28,9 @@ fun BottomNavGraph(navController: NavHostController) {
         }
         composable(Screen.Account.route) {
             AccountScreen()
+        }
+        composable(Screen.Account.route) {
+            ContactDetailScreen()
         }
     }
 }
