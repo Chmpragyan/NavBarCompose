@@ -15,7 +15,7 @@ import com.example.bottomnav.presentation.screens.messages.MessageScreen
 fun NavGraph(navController: NavHostController) {
     NavHost(navController, startDestination = Screen.Calls.route) {
         composable(Screen.Calls.route) {
-            CallsScreen()
+            CallsScreen(navController)
         }
         composable(Screen.Messages.route) {
             MessageScreen()
@@ -29,7 +29,7 @@ fun NavGraph(navController: NavHostController) {
         composable(Screen.Account.route) {
             AccountScreen()
         }
-        composable(Screen.Account.route) {
+        composable(Screen.ContactDetail.route) {
             ContactDetailScreen()
         }
     }

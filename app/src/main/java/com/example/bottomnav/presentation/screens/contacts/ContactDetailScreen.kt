@@ -10,6 +10,6 @@ import androidx.compose.ui.Modifier
 @Composable
 fun ContactDetailScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Contacts Screen")
+        Text("Contact Detail Screen")
     }
 }
