@@ -5,11 +5,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,16 +23,10 @@ import com.example.bottomnav.presentation.navigation.Screen
 
 @Composable
 fun CallsScreen(navController: NavController) {
-    Scaffold { paddingValues ->
-        Box(
-            modifier = Modifier
-                .fillMaxHeight()
-                .padding(paddingValues)
-        ) {
-            RecyclerView(
-                dummyData(),
-                onItemClick = { navController.navigate(Screen.ContactDetail.route) })
-        }
+    Box(modifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 0.dp)) {
+        RecyclerView(
+            dummyData(),
+            onItemClick = { navController.navigate(Screen.ContactDetail.route) })
     }
 }
 
@@ -74,7 +66,6 @@ fun RecyclerView(callLogs: List<CallLog>, onItemClick: (CallLog) -> Unit) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp, bottom = 2.dp)
     ) {
         items(callLogs.size) { index ->
             val callLogItem = callLogs[index]
