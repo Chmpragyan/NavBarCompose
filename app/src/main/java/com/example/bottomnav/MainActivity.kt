@@ -3,7 +3,6 @@ package com.example.bottomnav
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -20,7 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.bottomnav.presentation.components.BottomBar
+import com.example.bottomnav.presentation.components.BottomNav
 import com.example.bottomnav.presentation.components.navigationItems
 import com.example.bottomnav.presentation.navigation.NavGraph
 import com.example.bottomnav.presentation.navigation.Screen
@@ -28,7 +27,7 @@ import com.example.bottomnav.presentation.navigation.Screen
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
         setContent {
             MainScreen()
         }
@@ -63,7 +62,7 @@ fun MainScreen() {
             }
         },
         modifier = Modifier.fillMaxSize(),
-        bottomBar = { if(showBottomNav){ BottomBar(navController = navController) } }
+        bottomBar = { if(showBottomNav){ BottomNav(navController = navController) } }
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             NavGraph(navController = navController)

@@ -62,6 +62,10 @@ private fun dummyData(): List<CallLog> {
         CallLog(R.drawable.ic_incoming_call, "Hello World", "8:02"),
         CallLog(R.drawable.ic_incoming_call, "JHello World", "8:02"),
         CallLog(R.drawable.ic_incoming_call, "Hello World", "8:02"),
+        CallLog(R.drawable.ic_incoming_call, "Hell World", "8:02"),
+        CallLog(R.drawable.ic_incoming_call, "Hell World", "8:02"),
+        CallLog(R.drawable.ic_incoming_call, "Hell World", "8:02"),
+        CallLog(R.drawable.ic_incoming_call, "Hell00 World", "8:02"),
     )
 }
 
@@ -70,7 +74,7 @@ fun RecyclerView(callLogs: List<CallLog>, onItemClick: (CallLog) -> Unit) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
+        modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp, bottom = 2.dp)
     ) {
         items(callLogs.size) { index ->
             val callLogItem = callLogs[index]

@@ -67,12 +67,12 @@ val navigationItems = listOf(
 )
 
 @Composable
-fun BottomBar(navController: NavController) {
+fun BottomNav(navController: NavController) {
 
     NavigationBar(
         containerColor = colorResource(R.color.background),
         contentColor = colorResource(R.color.background),
-        modifier = Modifier.height(98.dp)
+        modifier = Modifier.height(48.dp)
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
