@@ -32,46 +32,46 @@ import com.example.bottomnav.R
 import com.example.bottomnav.presentation.navigation.BottomNavItem
 import com.example.bottomnav.presentation.navigation.Screen
 
-@Composable
-fun BottomBar(navController: NavController) {
-    val navigationItems = listOf(
-        BottomNavItem(
-            route = Screen.Calls.route,
-            selectedIcon = R.drawable.ic_call_nav_selected,
-            unSelectedIcon = R.drawable.ic_call_nav_unselected,
-            label = "Calls",
-        ),
-        BottomNavItem(
-            route = Screen.Messages.route,
-            selectedIcon = R.drawable.ic_message_nav_selected,
-            unSelectedIcon = R.drawable.ic_message_nav_unselected,
-            label = "Messages"
-        ),
-        BottomNavItem(
-            route = Screen.Keypad.route,
-            selectedIcon = R.drawable.ic_keypad_nav_selected,
-            unSelectedIcon = R.drawable.ic_keypad_nav_unselected,
-            label = "Keypad"
-        ),
-        BottomNavItem(
-            route = Screen.Contacts.route,
-            selectedIcon = R.drawable.ic_contact_nav_selected,
-            unSelectedIcon = R.drawable.ic_contact_nav_unselected,
-            label = "Contacts"
-        ),
-        BottomNavItem(
-            route = Screen.Account.route,
-            selectedIcon = R.drawable.ic_acount_nav_selected,
-            unSelectedIcon = R.drawable.ic_account_nav_unselected,
-            label = "Account"
-        )
-
+val navigationItems = listOf(
+    BottomNavItem(
+        route = Screen.Calls.route,
+        selectedIcon = R.drawable.ic_call_nav_selected,
+        unSelectedIcon = R.drawable.ic_call_nav_unselected,
+        label = "Calls",
+    ),
+    BottomNavItem(
+        route = Screen.Messages.route,
+        selectedIcon = R.drawable.ic_message_nav_selected,
+        unSelectedIcon = R.drawable.ic_message_nav_unselected,
+        label = "Messages"
+    ),
+    BottomNavItem(
+        route = Screen.Keypad.route,
+        selectedIcon = R.drawable.ic_keypad_nav_selected,
+        unSelectedIcon = R.drawable.ic_keypad_nav_unselected,
+        label = "Keypad"
+    ),
+    BottomNavItem(
+        route = Screen.Contacts.route,
+        selectedIcon = R.drawable.ic_contact_nav_selected,
+        unSelectedIcon = R.drawable.ic_contact_nav_unselected,
+        label = "Contacts"
+    ),
+    BottomNavItem(
+        route = Screen.Account.route,
+        selectedIcon = R.drawable.ic_acount_nav_selected,
+        unSelectedIcon = R.drawable.ic_account_nav_unselected,
+        label = "Account"
     )
+
+)
+
+@Composable
+fun BottomNav(navController: NavController) {
 
     NavigationBar(
         containerColor = colorResource(R.color.background),
         contentColor = colorResource(R.color.background),
-        modifier = Modifier.height(98.dp)
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
