@@ -1,4 +1,4 @@
-package com.example.bottomnav.presentation.screens.contacts
+package com.example.bottomnav.presentation.screens.dashboard.keypad
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,8 +8,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun ContactDetailScreen() {
+fun KeypadScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Contact Detail Screen")
+        Text("Keypad Screen")
     }
 }

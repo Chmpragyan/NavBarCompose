@@ -4,12 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.bottomnav.presentation.screens.account.AccountScreen
-import com.example.bottomnav.presentation.screens.calls.CallsScreen
-import com.example.bottomnav.presentation.screens.contacts.ContactDetailScreen
-import com.example.bottomnav.presentation.screens.contacts.ContactsScreen
-import com.example.bottomnav.presentation.screens.keypad.KeypadScreen
-import com.example.bottomnav.presentation.screens.messages.MessageScreen
+import com.example.bottomnav.presentation.screens.dashboard.account.AccountScreen
+import com.example.bottomnav.presentation.screens.dashboard.calls.CallsScreen
+import com.example.bottomnav.presentation.screens.dashboard.contacts.ContactDetailScreen
+import com.example.bottomnav.presentation.screens.dashboard.contacts.ContactsScreen
+import com.example.bottomnav.presentation.screens.dashboard.keypad.KeypadScreen
+import com.example.bottomnav.presentation.screens.dashboard.messages.MessageScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
