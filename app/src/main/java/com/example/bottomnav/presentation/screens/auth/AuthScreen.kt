@@ -14,9 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.bottomnav.R
 
 @Preview
@@ -38,6 +40,28 @@ fun AuthScreen() {
                 text = stringResource(R.string.your_business_communication_companion),
                 spaceAfterIcon = 16.dp
             )
+        }
+        Column(
+            modifier = Modifier
+                .padding(top = 320.dp, start = 108.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Icon(
+                painterResource(R.drawable.image_qr),
+                contentDescription = stringResource(R.string.scan_qr),
+                tint = Color.Unspecified,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            Text(
+                text = stringResource(R.string.scan_qr),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.W500,
+                lineHeight = 24.sp,
+                letterSpacing = 0.5.sp
+            )
+            Text(text = stringResource(R.string.tap_to_open_scanner), Modifier.padding(top = 16.dp))
         }
     }
 }
