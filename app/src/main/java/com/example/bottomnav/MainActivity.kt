@@ -28,13 +28,14 @@ import com.example.bottomnav.presentation.components.BottomNav
 import com.example.bottomnav.presentation.components.navigationItems
 import com.example.bottomnav.presentation.navigation.NavGraph
 import com.example.bottomnav.presentation.navigation.Screen
+import com.example.bottomnav.presentation.screens.auth.AuthScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MainScreen()
+            AuthScreen()
         }
     }
 }
