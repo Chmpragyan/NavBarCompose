@@ -6,4 +6,7 @@
     <string name="scan_qr">Scan QR</string>
     <string name="tap_to_open_scanner">Tap to open scanner</string>
     <string name="sign_in_with_security_code">Sign In with Security Code</string>
+
+    <!-- Security Code SignIn Screen -->
+    <string name="enter_security_code">Enter Security Code</string>
 </resources>

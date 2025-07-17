@@ -16,12 +16,15 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
@@ -53,8 +56,13 @@ fun SecurityCodeSignInScreen() {
                 textColor = colorResource(R.color.on_background),
                 spaceAfterIcon = 16.dp
             )
-            Spacer(modifier = Modifier.height(32.dp))
-            Text("Enter Security Code")
+            Spacer(modifier = Modifier.height(116.dp))
+            Text(
+                stringResource(R.string.enter_security_code),
+                color = colorResource(R.color.on_background),
+                lineHeight = 12.sp,
+                fontSize = 14.sp
+            )
             Spacer(modifier = Modifier.height(12.dp))
             OtpField()
         }
@@ -64,6 +72,7 @@ fun SecurityCodeSignInScreen() {
 @Composable
 fun OtpField() {
     var otpValue by remember { mutableStateOf("") }
+    val focusRequester = remember { FocusRequester() }
 
     BasicTextField(
         value = otpValue,
@@ -72,6 +81,7 @@ fun OtpField() {
                 otpValue = it
             }
         },
+        modifier = Modifier.focusRequester(focusRequester),
         keyboardOptions = KeyboardOptions(
             showKeyboardOnFocus = true,
             keyboardType = KeyboardType.Number
@@ -83,7 +93,8 @@ fun OtpField() {
                         index >= otpValue.length -> ""
                         else -> otpValue[index].toString()
                     }
-                    val isFocused = index == otpValue.length
+                    val isFocused =
+                        (index == otpValue.length) || (otpValue.length == 6 && index == 5)
 
                     OtpBox(
                         modifier = Modifier
@@ -98,6 +109,9 @@ fun OtpField() {
             }
         }
     )
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+    }
 }
 
 @Composable
@@ -113,10 +127,11 @@ fun OtpBox(
                 if (isFocused) colorResource(R.color.primary) else colorResource(R.color.pin_box_color),
                 RoundedCornerShape(8.dp)
             ),
+        contentAlignment = Alignment.Center
     ) {
         Text(
             text = text,
-            fontSize = 16.sp,
+            fontSize = 18.sp,
             fontWeight = FontWeight.W500,
             style = MaterialTheme.typography.headlineMedium,
             color = Color.DarkGray,
