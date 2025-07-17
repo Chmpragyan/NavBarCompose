@@ -7,12 +7,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,23 +33,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bottomnav.R
+import com.example.bottomnav.presentation.components.CustomButton
 
-@Preview
 @Composable
 fun SecurityCodeSignInScreen() {
-    Box(
+    val scrollState = rememberScrollState()
+    var otpValue by remember { mutableStateOf("") }
+
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(16.dp)
+            .verticalScroll(scrollState)
+            .imePadding(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(
-            modifier = Modifier.align(Alignment.TopCenter),
+            modifier = Modifier.weight(1f),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(58.dp))
@@ -64,27 +74,54 @@ fun SecurityCodeSignInScreen() {
                 fontSize = 14.sp
             )
             Spacer(modifier = Modifier.height(12.dp))
-            OtpField()
+            OtpField(
+                otpValue,
+                onOtpChange = { newValue ->
+                    otpValue = newValue
+                }
+            )
+        }
+
+        Box(
+            Modifier.padding(bottom = 48.dp)
+        ) {
+            CustomButton(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(48.dp),
+                text = stringResource(
+                    R.string.sign_in,
+                ),
+                onClick = { },
+                textColor = colorResource(R.color.white),
+                backgroundColor = if (otpValue.length == 6) {
+                    colorResource(R.color.primary)
+                } else {
+                    colorResource(R.color.bg_button_disabled)
+                },
+                borderColor = colorResource(R.color.bg_button_disabled),
+                shape = RoundedCornerShape(8.dp),
+                enabled = otpValue.length == 6
+            )
         }
     }
 }
 
 @Composable
-fun OtpField() {
-    var otpValue by remember { mutableStateOf("") }
+fun OtpField(otpValue: String, onOtpChange: (String) -> Unit) {
     val focusRequester = remember { FocusRequester() }
 
     BasicTextField(
         value = otpValue,
         onValueChange = {
             if (it.length <= 6) {
-                otpValue = it
+                onOtpChange(it)
             }
         },
         modifier = Modifier.focusRequester(focusRequester),
         keyboardOptions = KeyboardOptions(
-            showKeyboardOnFocus = true,
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Number,
+            imeAction = ImeAction.Done
         ),
         decorationBox = {
             Row {

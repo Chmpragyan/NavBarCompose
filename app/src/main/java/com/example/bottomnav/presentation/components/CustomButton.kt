@@ -20,14 +20,16 @@ fun CustomButton(
     backgroundColor: Color = Color.Transparent,
     borderColor: Color = Color.Black,
     borderWidth: Dp = 1.dp,
-    textColor: Color = Color.Black
+    textColor: Color = Color.Black,
+    enabled: Boolean = true
 ) {
     Button(
         onClick = onClick,
         shape = shape,
-        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
+        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor, disabledContainerColor = backgroundColor),
         border = BorderStroke(borderWidth, borderColor),
-        modifier = modifier
+        modifier = modifier,
+        enabled = enabled
     ) {
         Text(text, color = textColor)
     }

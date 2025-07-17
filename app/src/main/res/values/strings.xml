@@ -9,4 +9,5 @@
 
     <!-- Security Code SignIn Screen -->
     <string name="enter_security_code">Enter Security Code</string>
+    <string name="sign_in">Sign In</string>
 </resources>

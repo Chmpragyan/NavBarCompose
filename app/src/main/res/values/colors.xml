@@ -33,4 +33,5 @@
     <color name="on_muted_container">@color/grey700</color>
     <color name="on_background">@color/grey900</color>
     <color name="pin_box_color">#E0E0E0</color>
+    <color name="bg_button_disabled">#A6159946</color>
 </resources>
