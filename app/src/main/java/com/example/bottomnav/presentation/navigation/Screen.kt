@@ -3,6 +3,7 @@ package com.example.bottomnav.presentation.navigation
 sealed class Screen(val route: String, val title: String = "") {
     // Auth
     object Auth : Screen("auth_screen")
+    object SecurityCodeSignIn : Screen("securityCodeSignIn_screen")
 
     //Bottom Navigation
     object Calls : Screen("calls_screen", "Calls")
