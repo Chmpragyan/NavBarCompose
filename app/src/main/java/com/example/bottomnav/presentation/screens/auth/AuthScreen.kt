@@ -2,17 +2,20 @@ package com.example.bottomnav.presentation.screens.auth
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -44,9 +47,11 @@ fun AuthScreen() {
                 spaceAfterIcon = 16.dp
             )
         }
+
         Column(
             modifier = Modifier
-                .padding(top = 320.dp, start = 108.dp),
+                .padding(top = 320.dp)
+                .matchParentSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Icon(
@@ -67,19 +72,44 @@ fun AuthScreen() {
             Text(text = stringResource(R.string.tap_to_open_scanner), Modifier.padding(top = 16.dp))
         }
 
-        CustomButton(
+        Column(
             modifier = Modifier
-                .padding(vertical = 48.dp)
-                .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .height(48.dp),
-            text = stringResource(R.string.sign_in_with_security_code),
-            onClick = { },
-            backgroundColor = Color.Transparent,
-            textColor = Color.Black,
-            borderColor = Color.Black,
-            shape = RoundedCornerShape(8.dp),
-        )
+                .padding(bottom = 52.dp),
+        ) {
+            Row(
+                modifier = Modifier.padding(bottom = 24.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                HorizontalDivider(
+                    modifier = Modifier
+                        .weight(1f)
+                        .alpha(0.2f),
+                    thickness = 1.dp,
+                    color = Color.Gray
+                )
+                Text("Or", modifier = Modifier.padding(horizontal = 8.dp))
+                HorizontalDivider(
+                    modifier = Modifier
+                        .weight(1f)
+                        .alpha(0.2f),
+                    thickness = 1.dp,
+                    color = Color.Gray
+                )
+            }
+
+            CustomButton(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(48.dp),
+                text = stringResource(R.string.sign_in_with_security_code),
+                onClick = { },
+                backgroundColor = Color.Transparent,
+                textColor = Color.Black,
+                borderColor = Color.Black,
+                shape = RoundedCornerShape(8.dp),
+            )
+        }
     }
 }
 
