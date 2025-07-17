@@ -1,4 +1,4 @@
-package com.example.bottomnav.presentation.screens.contacts
+package com.example.bottomnav.presentation.screens.dashboard.contacts
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

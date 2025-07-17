@@ -1,4 +1,4 @@
-package com.example.bottomnav.presentation.screens.messages
+package com.example.bottomnav.presentation.screens.dashboard.account
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,8 +8,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun MessageScreen() {
+fun AccountScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Message Screen")
+        Text("Account Screen")
     }
 }

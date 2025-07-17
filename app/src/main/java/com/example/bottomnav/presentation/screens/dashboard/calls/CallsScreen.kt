@@ -1,4 +1,4 @@
-package com.example.bottomnav.presentation.screens.calls
+package com.example.bottomnav.presentation.screens.dashboard.calls
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
