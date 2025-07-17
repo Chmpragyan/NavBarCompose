@@ -5,4 +5,5 @@
     <string name="your_business_communication_companion">Your Business Communication Companion</string>
     <string name="scan_qr">Scan QR</string>
     <string name="tap_to_open_scanner">Tap to open scanner</string>
+    <string name="sign_in_with_security_code">Sign In with Security Code</string>
 </resources>

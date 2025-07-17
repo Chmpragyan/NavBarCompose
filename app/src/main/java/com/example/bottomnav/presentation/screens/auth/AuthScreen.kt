@@ -4,8 +4,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +22,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bottomnav.R
+import com.example.bottomnav.presentation.components.CustomButton
 
 @Preview
 @Composable
@@ -63,6 +66,20 @@ fun AuthScreen() {
             )
             Text(text = stringResource(R.string.tap_to_open_scanner), Modifier.padding(top = 16.dp))
         }
+
+        CustomButton(
+            modifier = Modifier
+                .padding(vertical = 48.dp)
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .height(48.dp),
+            text = stringResource(R.string.sign_in_with_security_code),
+            onClick = { },
+            backgroundColor = Color.Transparent,
+            textColor = Color.Black,
+            borderColor = Color.Black,
+            shape = RoundedCornerShape(8.dp),
+        )
     }
 }
 
