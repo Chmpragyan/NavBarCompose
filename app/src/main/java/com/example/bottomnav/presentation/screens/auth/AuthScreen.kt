@@ -17,17 +17,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bottomnav.R
 import com.example.bottomnav.presentation.components.CustomButton
 
-@Preview
 @Composable
 fun AuthScreen() {
     Box(
@@ -36,21 +35,22 @@ fun AuthScreen() {
             .padding(16.dp)
     ) {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.align(Alignment.TopCenter),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(72.dp))
+            Spacer(modifier = Modifier.height(58.dp))
             IconWithText(
                 iconRes = R.drawable.splash_logo,
                 iconContentDescription = stringResource(R.string.app_name),
                 text = stringResource(R.string.your_business_communication_companion),
+                textColor = colorResource(R.color.on_background),
                 spaceAfterIcon = 16.dp
             )
         }
 
         Column(
             modifier = Modifier
-                .padding(top = 320.dp)
+                .padding(top = 264.dp)
                 .matchParentSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -69,7 +69,11 @@ fun AuthScreen() {
                 lineHeight = 24.sp,
                 letterSpacing = 0.5.sp
             )
-            Text(text = stringResource(R.string.tap_to_open_scanner), Modifier.padding(top = 16.dp))
+            Text(
+                text = stringResource(R.string.tap_to_open_scanner),
+                Modifier.padding(top = 16.dp),
+                color = colorResource(R.color.on_surface_variant)
+            )
         }
 
         Column(
@@ -86,15 +90,19 @@ fun AuthScreen() {
                         .weight(1f)
                         .alpha(0.2f),
                     thickness = 1.dp,
-                    color = Color.Gray
+                    color = colorResource(R.color.outline)
                 )
-                Text("Or", modifier = Modifier.padding(horizontal = 8.dp))
+                Text(
+                    "Or",
+                    modifier = Modifier.padding(horizontal = 8.dp),
+                    color = colorResource(R.color.on_surface_variant)
+                )
                 HorizontalDivider(
                     modifier = Modifier
                         .weight(1f)
                         .alpha(0.2f),
                     thickness = 1.dp,
-                    color = Color.Gray
+                    color = colorResource(R.color.outline)
                 )
             }
 
@@ -102,11 +110,13 @@ fun AuthScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp),
-                text = stringResource(R.string.sign_in_with_security_code),
+                text = stringResource(
+                    R.string.sign_in_with_security_code,
+                ),
                 onClick = { },
+                textColor = colorResource(R.color.on_muted_container),
                 backgroundColor = Color.Transparent,
-                textColor = Color.Black,
-                borderColor = Color.Black,
+                borderColor = colorResource(R.color.muted_outline),
                 shape = RoundedCornerShape(8.dp),
             )
         }
@@ -119,7 +129,8 @@ fun IconWithText(
     iconRes: Int,
     iconContentDescription: String,
     text: String,
-    spaceAfterIcon: Dp
+    spaceAfterIcon: Dp,
+    textColor: Color
 ) {
     Column(
         modifier = modifier,
@@ -132,6 +143,6 @@ fun IconWithText(
             modifier = Modifier
         )
         Spacer(modifier = Modifier.height(spaceAfterIcon))
-        Text(text = text)
+        Text(text = text, color = textColor)
     }
 }
