@@ -4,6 +4,7 @@ sealed class Screen(val route: String, val title: String = "") {
     // Auth
     object Auth : Screen("auth_screen")
     object SecurityCodeSignIn : Screen("securityCodeSignIn_screen")
+    object MLKitQRScannerScreen : Screen("qrScanner_screen")
 
     //Bottom Navigation
     object Calls : Screen("calls_screen", "Calls")
