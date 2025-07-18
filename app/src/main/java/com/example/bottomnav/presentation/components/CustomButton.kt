@@ -26,7 +26,10 @@ fun CustomButton(
     Button(
         onClick = onClick,
         shape = shape,
-        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor, disabledContainerColor = backgroundColor),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = backgroundColor,
+            disabledContainerColor = backgroundColor
+        ),
         border = BorderStroke(borderWidth, borderColor),
         modifier = modifier,
         enabled = enabled

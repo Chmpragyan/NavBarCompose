@@ -17,8 +17,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -41,6 +47,7 @@ import androidx.compose.ui.unit.sp
 import com.example.bottomnav.R
 import com.example.bottomnav.presentation.components.CustomButton
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SecurityCodeSignInScreen() {
     val scrollState = rememberScrollState()
@@ -54,11 +61,25 @@ fun SecurityCodeSignInScreen() {
             .imePadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        TopAppBar(
+            modifier = Modifier
+                .height(60.dp)
+                .fillMaxWidth(),
+            title = { Text("") },
+            navigationIcon = {
+                IconButton(onClick = { }) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
+                        contentDescription = "Back"
+                    )
+                }
+            },
+        )
         Column(
             modifier = Modifier.weight(1f),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(58.dp))
+            Spacer(modifier = Modifier.height(38.dp))
             IconWithText(
                 iconRes = R.drawable.splash_logo,
                 iconContentDescription = stringResource(R.string.app_name),
@@ -66,7 +87,7 @@ fun SecurityCodeSignInScreen() {
                 textColor = colorResource(R.color.on_background),
                 spaceAfterIcon = 16.dp
             )
-            Spacer(modifier = Modifier.height(116.dp))
+            Spacer(modifier = Modifier.height(84.dp))
             Text(
                 stringResource(R.string.enter_security_code),
                 color = colorResource(R.color.on_background),
