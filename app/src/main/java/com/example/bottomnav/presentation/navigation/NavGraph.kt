@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.bottomnav.presentation.screens.auth.AuthScreen
+import com.example.bottomnav.presentation.screens.auth.SecurityCodeSignInScreen
 import com.example.bottomnav.presentation.screens.dashboard.account.AccountScreen
 import com.example.bottomnav.presentation.screens.dashboard.calls.CallsScreen
 import com.example.bottomnav.presentation.screens.dashboard.contacts.ContactDetailScreen
@@ -18,6 +19,9 @@ fun NavGraph(navController: NavHostController) {
         // Auth screen route
         composable(Screen.Auth.route) {
             AuthScreen()
+        }
+        composable(Screen.SecurityCodeSignIn.route) {
+            SecurityCodeSignInScreen()
         }
 
         // Navigation routes for bottom navigation screen
