@@ -38,16 +38,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                MLKitQRScannerScreen()
-                Text(
-                    text = "Scan QR Code",
-                    modifier = Modifier.padding(top = 48.dp)
-                )
-            }
+            MLKitQRScannerScreen()
         }
     }
 }
