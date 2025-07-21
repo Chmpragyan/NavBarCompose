@@ -18,8 +18,8 @@ class CutOutShape(private val sizeDp: Dp) : Shape {
     override fun createOutline(
         size: Size, layoutDirection: LayoutDirection, density: Density
     ): Outline {
-        val cutOutSizePx = with(density){sizeDp.toPx() * 0.20f}
-        val cornerRadiusPx = with(density){12f.dp.toPx()}
+        val cutOutSizePx = with(density) { sizeDp.toPx() * 0.20f }
+        val cornerRadiusPx = with(density) { 12f.dp.toPx() }
         val center = Offset(size.width / 2f, size.height / 2f)
 
         // Full screen path
@@ -39,7 +39,7 @@ class CutOutShape(private val sizeDp: Dp) : Shape {
             )
         }
 
-       // Combine the paths: Create a transparent cutout in the middle and retain the corners
+        // Combine the paths: Create a transparent cutout in the middle and retain the corners
         val finalPath = Path.combine(
             PathOperation.Difference, outlinePath, cutOutPath
         )
