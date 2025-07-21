@@ -1,16 +1,24 @@
 package com.example.bottomnav.presentation.components
 
+import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
@@ -19,20 +27,27 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.bottomnav.R
 import com.example.bottomnav.presentation.screens.auth.ScanQRText
 
 @Composable
 fun QRScannerTargetBackground(modifier: Modifier = Modifier) {
     val configuration = LocalConfiguration.current
     val height = configuration.screenHeightDp.dp
+    val width = configuration.screenWidthDp.dp
 
     Box {
         Box(
             modifier = modifier
                 .clip(CutOutShape(height / 1.2f))
-                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.34f))
+                .alpha(0.34f)
+                .background(colorResource(R.color.green100))
         ) // Background with center cutout shape to fit QR target
 
         QRTargetCanvas(
@@ -47,7 +62,42 @@ fun QRScannerTargetBackground(modifier: Modifier = Modifier) {
                 .offset(0.dp, height / 1.5f)
                 .padding(top = 24.dp)
         )
+
+        ImagePicker(
+            modifier = Modifier
+                .offset(width / 9f, height / 1.3f)
+                .padding(top = 24.dp)
+        )
     }
+}
+
+@Composable
+private fun ImagePicker(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+    Button(
+        modifier = modifier,
+        onClick = {
+            Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+        },
+        content = {
+            Icon(
+                painterResource(R.drawable.ic_qr),
+                contentDescription = stringResource(R.string.add_qr_from_gallery)
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+            Text(
+                text = stringResource(
+                    R.string.add_qr_from_gallery
+                ).uppercase(),
+                color = colorResource(R.color.white),
+            )
+        },
+        shape = RoundedCornerShape(8.dp),
+        border = BorderStroke(2.dp, colorResource(R.color.muted_outline)),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.Transparent
+        ),
+    )
 }
 
 @Composable

@@ -90,7 +90,7 @@ fun CameraPreview(modifier: Modifier) {
                     .build()
                     .also {
                         it.setAnalyzer(cameraExecutor, QRCodeAnalyzer {
-                            Toast.makeText(context, "Barcode found", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "QR code found", Toast.LENGTH_SHORT).show()
                         })
                     }
 
@@ -112,7 +112,7 @@ fun CameraPreview(modifier: Modifier) {
                 }
             }, ContextCompat.getMainExecutor(context))
             previewView
-        }
+        }, modifier = modifier
     )
 }
 
