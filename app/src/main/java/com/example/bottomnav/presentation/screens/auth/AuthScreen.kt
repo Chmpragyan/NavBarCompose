@@ -1,5 +1,7 @@
 package com.example.bottomnav.presentation.screens.auth
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +15,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -24,11 +27,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.bottomnav.R
 import com.example.bottomnav.presentation.components.CustomButton
+import com.example.bottomnav.presentation.navigation.Screen
 
 @Composable
-fun AuthScreen() {
+fun AuthScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -60,6 +65,12 @@ fun AuthScreen() {
                 tint = Color.Unspecified,
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
+                    .clickable(
+                        indication = null,
+                        interactionSource = remember { MutableInteractionSource() },
+                        onClick = {
+                            navController.navigate(Screen.MLKitQRScannerScreen.route)
+                        })
             )
             Spacer(modifier = Modifier.height(24.dp))
             Text(
@@ -113,7 +124,8 @@ fun AuthScreen() {
                 text = stringResource(
                     R.string.sign_in_with_security_code,
                 ),
-                onClick = { },
+                onClick = { navController.navigate(Screen.SecurityCodeSignIn.route) },
+
                 textColor = colorResource(R.color.on_muted_container),
                 backgroundColor = Color.Transparent,
                 borderColor = colorResource(R.color.muted_outline),
