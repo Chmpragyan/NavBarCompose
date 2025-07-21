@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.bottomnav.presentation.screens.auth.AuthScreen
+import com.example.bottomnav.presentation.screens.auth.MLKitQRScannerScreen
 import com.example.bottomnav.presentation.screens.auth.SecurityCodeSignInScreen
 import com.example.bottomnav.presentation.screens.dashboard.account.AccountScreen
 import com.example.bottomnav.presentation.screens.dashboard.calls.CallsScreen
@@ -22,6 +23,9 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(Screen.SecurityCodeSignIn.route) {
             SecurityCodeSignInScreen()
+        }
+        composable(Screen.MLKitQRScannerScreen.route) {
+            MLKitQRScannerScreen()
         }
 
         // Navigation routes for bottom navigation screen

@@ -11,6 +11,7 @@
     <!-- Primary-->
     <color name="primary900">#083009</color>
     <color name="primary500">#159946</color>
+    <color name="green100">#7F159946</color>
 
     <!-- Grey-->
     <color name="grey900">#1F1F1F</color>
