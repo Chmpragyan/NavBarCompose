@@ -38,13 +38,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
 import com.example.bottomnav.R
 import com.example.bottomnav.presentation.components.QRScannerTargetBackground
 import com.example.bottomnav.utils.QRCodeAnalyzer
 import java.util.concurrent.Executors
 
 @Composable
-fun MLKitQRScannerScreen() {
+fun MLKitQRScannerScreen(navController: NavController) {
     val hasPermission = rememberCameraPermission()
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -61,7 +62,8 @@ fun MLKitQRScannerScreen() {
             }
 
             BackIconButton(
-                modifier = Modifier.padding(top = 12.dp, start = 4.dp), onTap = {}
+                modifier = Modifier.padding(top = 12.dp, start = 4.dp),
+                onTap = { navController.navigateUp() }
             )
         }
     }

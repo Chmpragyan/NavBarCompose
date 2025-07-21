@@ -44,12 +44,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.bottomnav.R
 import com.example.bottomnav.presentation.components.CustomButton
+import com.example.bottomnav.presentation.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SecurityCodeSignInScreen() {
+fun SecurityCodeSignInScreen(navController: NavController) {
     val scrollState = rememberScrollState()
     var otpValue by remember { mutableStateOf("") }
 
@@ -67,7 +69,7 @@ fun SecurityCodeSignInScreen() {
                 .fillMaxWidth(),
             title = { Text("") },
             navigationIcon = {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { navController.navigateUp()}) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                         contentDescription = "Back"
