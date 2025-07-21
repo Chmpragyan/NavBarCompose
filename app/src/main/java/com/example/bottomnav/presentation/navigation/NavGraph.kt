@@ -22,7 +22,7 @@ fun NavGraph(navController: NavHostController) {
             AuthScreen(navController)
         }
         composable(Screen.SecurityCodeSignIn.route) {
-            SecurityCodeSignInScreen()
+            SecurityCodeSignInScreen(navController)
         }
         composable(Screen.MLKitQRScannerScreen.route) {
             MLKitQRScannerScreen()
