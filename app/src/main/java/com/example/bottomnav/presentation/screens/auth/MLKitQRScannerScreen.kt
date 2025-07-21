@@ -1,7 +1,11 @@
 package com.example.bottomnav.presentation.screens.auth
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCapture
@@ -20,8 +24,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -35,15 +45,20 @@ import java.util.concurrent.Executors
 
 @Composable
 fun MLKitQRScannerScreen() {
+    val hasPermission = rememberCameraPermission()
+
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            CameraPreview(modifier = Modifier.fillMaxSize())
-
-            QRScannerTargetBackground(modifier = Modifier.fillMaxSize())
+            if (hasPermission) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    CameraPreview(modifier = Modifier.fillMaxSize())
+                    QRScannerTargetBackground(modifier = Modifier.fillMaxSize())
+                }
+            }
 
             BackIconButton(
                 modifier = Modifier.padding(top = 12.dp, start = 4.dp), onTap = {}
@@ -124,4 +139,27 @@ private fun BackIconButton(
             .background(Color.Transparent)
             .padding(12.dp)
             .clickable { onTap() })
+}
+
+@Composable
+fun rememberCameraPermission(): Boolean {
+    val context = LocalContext.current
+    var hasPermission by remember {
+        mutableStateOf(
+            ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_GRANTED
+        )
+    }
+
+    val permissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted -> hasPermission = granted }
+
+    LaunchedEffect(Unit) {
+        if (!hasPermission) {
+            permissionLauncher.launch(Manifest.permission.CAMERA)
+        }
+    }
+
+    return hasPermission
 }
