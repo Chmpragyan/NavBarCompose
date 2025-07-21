@@ -1,5 +1,7 @@
 package com.example.bottomnav.presentation.navigation
 
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -21,11 +23,11 @@ fun NavGraph(navController: NavHostController) {
         composable(Screen.Auth.route) {
             AuthScreen(navController)
         }
-        composable(Screen.SecurityCodeSignIn.route) {
+        composable(Screen.SecurityCodeSignIn.route, popExitTransition = { fadeOut() }) {
             SecurityCodeSignInScreen(navController)
         }
-        composable(Screen.MLKitQRScannerScreen.route) {
-            MLKitQRScannerScreen()
+        composable(Screen.MLKitQRScannerScreen.route, exitTransition = { ExitTransition.None }) {
+            MLKitQRScannerScreen(navController)
         }
 
         // Navigation routes for bottom navigation screen
